@@ -24,24 +24,24 @@ public class animationStateController : MonoBehaviour
         bool IsRunning = mAnimator.GetBool(IsRunningHash);
 
         bool forwardPressed = Input.GetKey("w");
-        bool runPressed = Input.GetKey("left shift");
+        bool runPressed = Input.GetKey(KeyCode.LeftShift);
 
         if(!IsWalking && forwardPressed)
         {
             mAnimator.SetBool(IsWalkingHash, true);
         }
 
-        if(IsWalking && !forwardPressed)
+        else if(IsWalking && !forwardPressed)
         {
             mAnimator.SetBool(IsWalkingHash, false);
         }
         
-        if(!IsRunning && (forwardPressed && runPressed))
+        else if(!IsRunning && (forwardPressed && runPressed))
         {
             mAnimator.SetBool(IsRunningHash, true);
         }
 
-        if(IsRunning && (!forwardPressed || !runPressed))
+        else if(IsRunning && (!forwardPressed || !runPressed))
         {
             mAnimator.SetBool(IsRunningHash, false);
         }
