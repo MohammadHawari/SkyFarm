@@ -5,8 +5,6 @@ using UnityEngine;
 public class ThirdPersonMovment : MonoBehaviour
 {
 
-
-
     public CharacterController controller;
     public Transform cam;
     public float speed = 6f;
@@ -50,23 +48,16 @@ public class ThirdPersonMovment : MonoBehaviour
         }
 
         gravityMovment = gravityDirection * -currentGravity * Time.deltaTime;
+        controller.Move(gravityMovment);
     }
+
 
     #endregion
 
-    private void Awake() 
+    #region - Movment -
+
+    void PlayerMovment()
     {
-        controller = GetComponent<CharacterController>();
-        gravityDirection = Vector3.down;
-    }
-
-
-    void Update()
-    {
-
-
-        CalculateGravity();
-
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
@@ -92,11 +83,26 @@ public class ThirdPersonMovment : MonoBehaviour
             {
                 speed = 6;
             }
-
-            controller.Move(gravityMovment);
         }
+    }
+
+    #endregion
+
+    #region - Awake -
+    private void Awake() 
+    {
+        controller = GetComponent<CharacterController>();
+        gravityDirection = Vector3.down;
+    }
+
+    #endregion
 
 
+    void Update()
+    {
+
+        CalculateGravity();
+        PlayerMovment();
 
     }
 
