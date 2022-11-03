@@ -23,7 +23,11 @@ public class animationStateController : MonoBehaviour
         bool IsWalking = mAnimator.GetBool(IsWalkingHash);
         bool IsRunning = mAnimator.GetBool(IsRunningHash);
 
-        bool forwardPressed = Input.GetKey("w");
+        bool forwardPressed = false;
+        if(Input.GetKey("w") || (Input.GetKey("s") || (Input.GetKey("a")) || (Input.GetKey("d"))))
+        {
+            forwardPressed = true;
+        }
         bool runPressed = Input.GetKey(KeyCode.LeftShift);
 
         if(!IsWalking && forwardPressed)

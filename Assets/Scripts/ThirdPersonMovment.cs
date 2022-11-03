@@ -71,6 +71,11 @@ public class ThirdPersonMovment : MonoBehaviour
 
         if(direction.magnitude >= 0.1f)
         {
+            if(jumpingTrigger)
+            {
+                speed = 6f;
+                running = false;
+            }
             if(running)
             {
                 speed = 9f;
@@ -85,7 +90,7 @@ public class ThirdPersonMovment : MonoBehaviour
         }
         else
         {
-            if(speed > 9)
+            if(speed >= 9)
             {
                 speed = 6;
             }
