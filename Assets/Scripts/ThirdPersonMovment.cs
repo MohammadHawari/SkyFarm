@@ -20,15 +20,13 @@ public class ThirdPersonMovment : MonoBehaviour
 
 
     [Header("Gravity")]
-    public float gravity;
-    public float currentGravity;
-    public float constantGravity;
-
-    public float maxGravity;
+    public float gravity = 10;
+    public float constantGravity = -0.6f;
+    public float maxGravity = -15;
 
     private Vector3 gravityDirection;
     private Vector3 gravityMovment;
-
+    private float currentGravity;
 
     #region - Gravity -
 
@@ -94,7 +92,7 @@ public class ThirdPersonMovment : MonoBehaviour
             {
                 speed = 6;
             }
-            
+
             controller.Move(gravityMovment);
         }
 
