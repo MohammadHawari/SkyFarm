@@ -6,6 +6,7 @@ public class ThirdPersonMovment : MonoBehaviour
 {
 
     public CharacterController controller;
+    public Animator animator;
     public Transform cam;
     public float speed = 6f;
 
@@ -26,6 +27,11 @@ public class ThirdPersonMovment : MonoBehaviour
     private Vector3 gravityMovment;
     private float currentGravity;
 
+    [Header("Jump")]
+    public float jumpForce = 5.0f; 
+    private float verticalVelocity;
+    private bool jumpingTrigger;
+
     #region - Gravity -
 
     private bool IsGrounded()
@@ -35,7 +41,7 @@ public class ThirdPersonMovment : MonoBehaviour
 
     private void CalculateGravity()
     {
-        if(IsGrounded())
+        if(IsGrounded() && !jumpingTrigger)
         {
             currentGravity = constantGravity;
         }
@@ -74,7 +80,7 @@ public class ThirdPersonMovment : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            Debug.Log($"speed is {speed}");
+            // Debug.Log($"speed is {speed}");
             controller.Move((moveDir * speed * Time.deltaTime) + gravityMovment);
         }
         else
@@ -88,10 +94,51 @@ public class ThirdPersonMovment : MonoBehaviour
 
     #endregion
 
+    #region - Jump -
+
+    void Jump()
+    {
+        if(!IsGrounded())
+        {
+            return;
+        }
+
+
+        else if(Input.GetKey(KeyCode.Space))
+        {
+            jumpingTrigger = true;
+            currentGravity = jumpForce;
+            animator.SetTrigger("IsJumping");
+
+        }
+        else
+        {
+            jumpingTrigger = false;       
+        }
+        
+
+
+        // if(IsGrounded())
+        // {
+        //     verticalVelocity = -gravity * Time.deltaTime;
+        //     if(Input.GetKey(KeyCode.Space))
+        //     {
+        //         verticalVelocity = 0;
+        //         verticalVelocity = jumpForce;
+        //         Vector3 moveVector = new Vector3(0,verticalVelocity,0);
+        //         controller.Move(moveVector * Time.deltaTime);
+        //     }
+
+        // }
+    }
+
+    #endregion
+
     #region - Awake -
     private void Awake() 
     {
         controller = GetComponent<CharacterController>();
+        animator = GetComponentInChildren(typeof(Animator)) as Animator;
         gravityDirection = Vector3.down;
     }
 
@@ -103,7 +150,7 @@ public class ThirdPersonMovment : MonoBehaviour
 
         CalculateGravity();
         PlayerMovment();
-
+        Jump();
     }
 
     

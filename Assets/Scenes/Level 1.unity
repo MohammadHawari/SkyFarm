@@ -1415,7 +1415,6 @@ GameObject:
   - component: {fileID: 787178922}
   - component: {fileID: 787178924}
   - component: {fileID: 787178923}
-  - component: {fileID: 787178926}
   m_Layer: 0
   m_Name: Third Person Player
   m_TagString: Player
@@ -1455,6 +1454,10 @@ MonoBehaviour:
   cam: {fileID: 1145070684}
   speed: 6
   turnSmoothTime: 0.1
+  gravity: 10
+  constantGravity: -0.6
+  maxGravity: -15
+  jumpForce: 10
 --- !u!143 &787178924
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1472,20 +1475,6 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1, z: 0}
---- !u!136 &787178926
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 787178921}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 1
-  m_Height: 1
-  m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &793293053
 PrefabInstance:
@@ -2704,11 +2693,11 @@ MonoBehaviour:
   m_BindingMode: 4
   m_SplineCurvature: 0.2
   m_Orbits:
-  - m_Height: 4
+  - m_Height: 6
     m_Radius: 6
   - m_Height: 2.06
     m_Radius: 6
-  - m_Height: 1
+  - m_Height: 0
     m_Radius: 6
   m_LegacyHeadingBias: 3.4028235e+38
   m_Rigs:
@@ -3355,7 +3344,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2022792390}
-  m_LocalRotation: {x: 0.16460909, y: -0.000000014697894, z: 0.0000000024528668, w: 0.9863589}
+  m_LocalRotation: {x: 0.16460909, y: 0.000000014697894, z: -0.0000000024528668, w: 0.9863589}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
