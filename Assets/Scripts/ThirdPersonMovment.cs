@@ -5,6 +5,8 @@ using UnityEngine;
 public class ThirdPersonMovment : MonoBehaviour
 {
 
+
+
     public CharacterController controller;
     public Transform cam;
     public float speed = 6f;
@@ -15,8 +17,58 @@ public class ThirdPersonMovment : MonoBehaviour
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
     // Update is called once per frame
+
+
+    [Header("Gravity")]
+    public float gravity;
+    public float currentGravity;
+    public float constantGravity;
+
+    public float maxGravity;
+
+    private Vector3 gravityDirection;
+    private Vector3 gravityMovment;
+
+
+    #region - Gravity -
+
+    private bool IsGrounded()
+    {
+        return controller.isGrounded;
+    }
+
+    private void CalculateGravity()
+    {
+        if(IsGrounded())
+        {
+            currentGravity = constantGravity;
+        }
+        else
+        {
+            if(currentGravity > maxGravity)
+            {
+                currentGravity -= gravity * Time.deltaTime;
+            }
+        }
+
+        gravityMovment = gravityDirection * -currentGravity * Time.deltaTime;
+    }
+
+    #endregion
+
+    private void Awake() 
+    {
+        controller = GetComponent<CharacterController>();
+        gravityDirection = Vector3.down;
+    }
+
+
     void Update()
     {
+
+
+        CalculateGravity();
+
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
@@ -34,14 +86,21 @@ public class ThirdPersonMovment : MonoBehaviour
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             Debug.Log($"speed is {speed}");
-            controller.Move(moveDir * speed * Time.deltaTime);
+            controller.Move((moveDir * speed * Time.deltaTime) + gravityMovment);
         }
-        else if(speed >= 9)
+        else
         {
-            speed = 6;
+            if(speed > 9)
+            {
+                speed = 6;
+            }
+            
+            controller.Move(gravityMovment);
         }
 
 
 
     }
+
+    
 }
