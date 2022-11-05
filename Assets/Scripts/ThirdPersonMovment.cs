@@ -8,6 +8,7 @@ public class ThirdPersonMovment : MonoBehaviour
     public CharacterController controller;
     public Animator animator;
     public Transform cam;
+    PlayerInteraction playerInteraction; 
     public float speed = 6f;
 
     bool running;
@@ -139,11 +140,29 @@ public class ThirdPersonMovment : MonoBehaviour
 
     #endregion
 
+    #region - interact -
+
+    public void Interact()
+    {
+        //Tool interaction
+        if (Input.GetButtonDown("Fire1"))
+        {
+            //Interact
+            playerInteraction.Interact(); 
+        }
+
+        //TODO: Set up item interaction
+    }
+
+
+    #endregion
+
     #region - Awake -
     private void Awake() 
     {
         controller = GetComponent<CharacterController>();
         animator = GetComponentInChildren(typeof(Animator)) as Animator;
+        playerInteraction = GetComponentInChildren<PlayerInteraction>();
         gravityDirection = Vector3.down;
     }
 
@@ -156,6 +175,7 @@ public class ThirdPersonMovment : MonoBehaviour
         CalculateGravity();
         PlayerMovment();
         Jump();
+        Interact();
     }
 
     
