@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3252422239711545485}
   - component: {fileID: 9028314886022496132}
   - component: {fileID: 4594532864143587865}
-  - component: {fileID: 2983881489403575057}
   m_Layer: 0
   m_Name: Select
   m_TagString: Untagged
@@ -62,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 6b03b7ed1ab6a1f43b8ed5cc35864cb0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,19 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2983881489403575057
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2651245021064901337}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4858603852581809114
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,8 +94,8 @@ GameObject:
   - component: {fileID: 4858603852581809118}
   - component: {fileID: 4858603852581809119}
   - component: {fileID: 4858603852581809116}
-  - component: {fileID: 4858603852581809117}
   - component: {fileID: 7706806545037378926}
+  - component: {fileID: 4909743186858002364}
   m_Layer: 0
   m_Name: Land
   m_TagString: Untagged
@@ -183,19 +169,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4858603852581809117
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4858603852581809114}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7706806545037378926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,3 +186,16 @@ MonoBehaviour:
   farmlandMat: {fileID: 2100000, guid: ea952b4685f0ad2468377c3a29809184, type: 2}
   wateredMat: {fileID: 2100000, guid: 5fd2d1bbb6a6ef14db1b54d6b648d38b, type: 2}
   select: {fileID: 2651245021064901337}
+--- !u!65 &4909743186858002364
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4858603852581809114}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
