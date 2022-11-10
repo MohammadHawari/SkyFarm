@@ -8,6 +8,11 @@ public class Land : MonoBehaviour
     {
         Soil, Farmland, Watered
     }
+    
+    [Header("Crops")]
+    public CropTransmition crop;
+    private bool planted = false;
+    private bool grown = false;
 
     public LandStatus landStatus;
 
@@ -28,6 +33,7 @@ public class Land : MonoBehaviour
 
         //Deselect the land by default
         Select(false);
+
     }
 
     public void SwitchLandStatus(LandStatus statusToSwitch)
@@ -89,9 +95,30 @@ public class Land : MonoBehaviour
                 case EquipmentData.ToolType.WateringCan:
                     SwitchLandStatus(LandStatus.Watered);
                     break;
+                case EquipmentData.ToolType.Timer65D:
+                    if(landStatus == LandStatus.Watered && planted && !grown && crop.VegieName() == "Tomato")
+                    {
+                        crop.Grow();
+                        grown = true;
+                    }
+                    break;
+                case EquipmentData.ToolType.Timer120D:
+                    if(landStatus == LandStatus.Watered && planted && !grown && crop.VegieName() == "Cabbage")
+                    {
+                        crop.Grow();
+                        grown = true;
+                    }
+                    break;
             }
 
+            return;
+        }
 
+        SeedData seedTool = toolSlot as SeedData;
+        if(seedTool != null && landStatus != LandStatus.Soil && !planted)
+        {
+            crop.Plant(seedTool);
+            planted = true;
         }
     }
 }
