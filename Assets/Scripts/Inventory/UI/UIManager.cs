@@ -16,7 +16,8 @@ public class UIManager : MonoBehaviour
     [Header("Inventory System")]
 
     //The inventory panel
-    public GameObject inventoryPanel; 
+    public GameObject inventoryPanel;
+    public GameObject instructionsPanel; 
 
     //The tool slot UIs
     public InventorySlot[] toolSlots;
@@ -117,9 +118,24 @@ public class UIManager : MonoBehaviour
     public void ToggleInventoryPanel()
     {
         //If the panel is hidden, show it and vice versa
-        inventoryPanel.SetActive(!inventoryPanel.activeSelf);
+        if(!instructionsPanel.activeSelf)
+        {
+            inventoryPanel.SetActive(!inventoryPanel.activeSelf);
+            RenderInventory();
+        }
 
-        RenderInventory();
+
+    }
+
+    public void ToggleInstructionsPanel()
+    {
+        //If the panel is hidden, show it and vice versa
+        if(!inventoryPanel.activeSelf)
+        {
+            instructionsPanel.SetActive(!instructionsPanel.activeSelf);
+        }
+
+
     }
 
     //Display Item info on the Item infobox
