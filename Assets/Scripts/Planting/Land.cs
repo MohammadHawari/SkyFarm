@@ -90,10 +90,27 @@ public class Land : MonoBehaviour
             switch (toolType)
             {
                 case EquipmentData.ToolType.Hoe:
-                    SwitchLandStatus(LandStatus.Farmland);
+                    if(landStatus == LandStatus.Soil)
+                    {
+                        SwitchLandStatus(LandStatus.Farmland);
+                    }
+
+                    if(landStatus == LandStatus.Watered && planted && grown)
+                    {
+                        planted = false;
+                        grown = false;
+                        SwitchLandStatus(LandStatus.Farmland);
+                        crop.Delete();
+                        InventoryManager.Instance.AddItemToInventory(crop.plantTransform);
+                    }
+
                     break;
                 case EquipmentData.ToolType.WateringCan:
-                    SwitchLandStatus(LandStatus.Watered);
+
+                    if(landStatus == LandStatus.Farmland)
+                    {
+                        SwitchLandStatus(LandStatus.Watered);
+                    }
                     break;
                 case EquipmentData.ToolType.Timer65D:
                     if(landStatus == LandStatus.Watered && planted && !grown && crop.VegieName() == "Tomato")

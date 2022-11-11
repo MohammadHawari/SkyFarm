@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1de9f362f247629409a7590e6a8c13b5, type: 3}
   m_Name: WateringCan
   m_EditorClassIdentifier: 
-  description: 
+  description: Waters the farmland
   thumbnail: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   gameModel: {fileID: 0}
   toolType: 1

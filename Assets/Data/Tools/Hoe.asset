@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1de9f362f247629409a7590e6a8c13b5, type: 3}
   m_Name: Hoe
   m_EditorClassIdentifier: 
-  description: 
+  description: The first step into farming, turns soil into farmland
   thumbnail: {fileID: -489399434, guid: 2f452a0bb379f6c47b86b32479307ec9, type: 3}
   gameModel: {fileID: 0}
   toolType: 0

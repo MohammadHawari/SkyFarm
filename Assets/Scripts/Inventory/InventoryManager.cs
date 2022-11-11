@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using System;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -31,6 +34,8 @@ public class InventoryManager : MonoBehaviour
     public ItemData[] items = new ItemData[8];
     //Item in the player's hand
     public ItemData equippedItem = null;
+    public int money = 0;
+    public TMP_Text moneyText;
 
     //Equipping
 
@@ -104,6 +109,47 @@ public class InventoryManager : MonoBehaviour
         //Update changes in the inventory
         UIManager.Instance.RenderInventory();
         
+    }
+
+    public void AddItemToInventory(ItemData item)
+    {
+
+        //Iterate through each inventory slot and find an empty slot
+        for(int i =0; i < items.Length; i++)
+        {
+            if(items[i] == null)
+            {
+                //Add item into an empty item slot
+                items[i] = item;
+                break; 
+            }
+        }     
+    }
+
+    public void SellAllItems()
+    {
+
+        //Iterate through each inventory slot and find an empty slot
+        int itemCounter = 0;
+        for(int i =0; i < items.Length; i++)
+        {
+            if(items[i] != null)
+            {
+                items[i] = null;
+                itemCounter++;
+            }
+        }
+
+        money += itemCounter * 100;
+
+
+        // update money text 
+        moneyText.text = money.ToString() + "$";
+
+        if(money >= 1000)
+        {
+            UIManager.Instance.ToggleEndPanel();
+        }  
     }
 
 }
