@@ -20,7 +20,8 @@ public class Land : MonoBehaviour
     new Renderer renderer;
 
     //The selection gameobject to enable when the player is selecting the land
-    public GameObject select; 
+    public GameObject select;
+    public GameObject player; 
 
     // Start is called before the first frame update
     void Start()
@@ -72,6 +73,30 @@ public class Land : MonoBehaviour
     }
 
     //When the player presses the interact button while selecting this land
+
+
+    // I need to transform all the logic to a diffrent function where i can wait and make the interact
+    // function only for switching the case ::::::::::::::::::::::;
+
+    private IEnumerator Hoe()
+    {
+        ThirdPersonMovment.Instance.FarmingAnimation();
+        yield return new WaitForSeconds(0.9f);
+        SwitchLandStatus(LandStatus.Farmland);
+    }
+
+    private IEnumerator Gathering()
+    {
+        ThirdPersonMovment.Instance.GatheringAnimation();
+        yield return new WaitForSeconds(1f);
+        planted = false;
+        grown = false;
+        
+        SwitchLandStatus(LandStatus.Farmland);       
+        crop.Delete();
+        InventoryManager.Instance.AddItemToInventory(crop.plantTransform);
+    }
+
     public void Interact()
     {
 
@@ -91,17 +116,14 @@ public class Land : MonoBehaviour
             {
                 case EquipmentData.ToolType.Hoe:
                     if(landStatus == LandStatus.Soil)
-                    {
-                        SwitchLandStatus(LandStatus.Farmland);
+                    {                      
+                        StartCoroutine(Hoe());                        
                     }
 
                     if(landStatus == LandStatus.Watered && planted && grown)
                     {
-                        planted = false;
-                        grown = false;
-                        SwitchLandStatus(LandStatus.Farmland);
-                        crop.Delete();
-                        InventoryManager.Instance.AddItemToInventory(crop.plantTransform);
+                        StartCoroutine(Gathering());
+                    
                     }
 
                     break;

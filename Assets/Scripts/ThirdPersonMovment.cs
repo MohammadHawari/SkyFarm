@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ThirdPersonMovment : MonoBehaviour
 {
+    public static ThirdPersonMovment Instance { get; private set; }
+
 
     public CharacterController controller;
     public Animator animator;
@@ -121,21 +123,6 @@ public class ThirdPersonMovment : MonoBehaviour
         {
             jumpingTrigger = false;       
         }
-        
-
-
-        // if(IsGrounded())
-        // {
-        //     verticalVelocity = -gravity * Time.deltaTime;
-        //     if(Input.GetKey(KeyCode.Space))
-        //     {
-        //         verticalVelocity = 0;
-        //         verticalVelocity = jumpForce;
-        //         Vector3 moveVector = new Vector3(0,verticalVelocity,0);
-        //         controller.Move(moveVector * Time.deltaTime);
-        //     }
-
-        // }
     }
 
     #endregion
@@ -153,20 +140,50 @@ public class ThirdPersonMovment : MonoBehaviour
 
         //TODO: Set up item interaction
     }
+    
+    #endregion
+
+    #region - gatheringAnimation -
+
+    public void GatheringAnimation()
+    {
+        animator.SetTrigger("IsGathering");
+    }
 
 
     #endregion
+
+    #region  - FarmingAnimation -
+
+    public void FarmingAnimation()
+    {
+        animator.SetTrigger("IsFarming");
+    }
+
+    #endregion
+
 
     #region - Awake -
     private void Awake() 
     {
-        controller = GetComponent<CharacterController>();
-        animator = GetComponentInChildren(typeof(Animator)) as Animator;
-        playerInteraction = GetComponentInChildren<PlayerInteraction>();
-        gravityDirection = Vector3.down;
+        //If there is more than one instance, destroy the extra
+        if(Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            //Set the static instance to this instance
+            Instance = this;
+            controller = GetComponent<CharacterController>();
+            animator = GetComponentInChildren(typeof(Animator)) as Animator;
+            playerInteraction = GetComponentInChildren<PlayerInteraction>();
+            gravityDirection = Vector3.down; 
+        }
     }
 
     #endregion
+
 
 
     void Update()
