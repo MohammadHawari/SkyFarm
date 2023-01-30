@@ -21,7 +21,16 @@ public class Land : MonoBehaviour
 
     //The selection gameobject to enable when the player is selecting the land
     public GameObject select;
-    public GameObject player; 
+    public GameObject player;
+
+    public void Growing()
+    {
+        if(landStatus == LandStatus.Watered && planted && !grown)
+        {
+            crop.Grow();
+            grown = true;
+        }
+    } 
 
     // Start is called before the first frame update
     void Start()
@@ -83,6 +92,7 @@ public class Land : MonoBehaviour
         ThirdPersonMovment.Instance.FarmingAnimation();
         yield return new WaitForSeconds(0.9f);
         SwitchLandStatus(LandStatus.Farmland);
+        SpeechManger.Instance.LandCounter("tillted"); 
     }
 
     private IEnumerator Gathering()
@@ -117,7 +127,8 @@ public class Land : MonoBehaviour
                 case EquipmentData.ToolType.Hoe:
                     if(landStatus == LandStatus.Soil)
                     {                      
-                        StartCoroutine(Hoe());                        
+                        StartCoroutine(Hoe());
+                                               
                     }
 
                     if(landStatus == LandStatus.Watered && planted && grown)
@@ -132,22 +143,30 @@ public class Land : MonoBehaviour
                     if(landStatus == LandStatus.Farmland)
                     {
                         SwitchLandStatus(LandStatus.Watered);
+                        SpeechManger.Instance.LandCounter("watered"); 
                     }
-                    break;
-                case EquipmentData.ToolType.Timer65D:
-                    if(landStatus == LandStatus.Watered && planted && !grown && crop.VegieName() == "Tomato")
+
+                    if(landStatus == LandStatus.Watered && planted && grown)
                     {
-                        crop.Grow();
-                        grown = true;
+                        StartCoroutine(Gathering());
+                    
                     }
+                    
                     break;
-                case EquipmentData.ToolType.Timer120D:
-                    if(landStatus == LandStatus.Watered && planted && !grown && crop.VegieName() == "Cabbage")
-                    {
-                        crop.Grow();
-                        grown = true;
-                    }
-                    break;
+                // case EquipmentData.ToolType.Timer65D:
+                //     if(landStatus == LandStatus.Watered && planted && !grown && crop.VegieName() == "Tomato")
+                //     {
+                //         crop.Grow();
+                //         grown = true;
+                //     }
+                //     break;
+                // case EquipmentData.ToolType.Timer120D:
+                //     if(landStatus == LandStatus.Watered && planted && !grown && crop.VegieName() == "Cabbage")
+                //     {
+                //         crop.Grow();
+                //         grown = true;
+                //     }
+                //     break;
             }
 
             return;
@@ -158,6 +177,8 @@ public class Land : MonoBehaviour
         {
             crop.Plant(seedTool);
             planted = true;
+            SpeechManger.Instance.LandCounter("seed"); 
         }
+
     }
 }

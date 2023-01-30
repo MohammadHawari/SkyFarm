@@ -34,6 +34,16 @@ public class UIManager : MonoBehaviour
     public TMP_Text itemNameText;
     public TMP_Text itemDescriptionText; 
 
+    // info panel
+
+    public GameObject infoPanel;
+
+    // the other objects on the screen
+
+    public GameObject bag;
+    public GameObject book;
+    public GameObject statusBar;
+
 
     private void Awake()
     {
@@ -137,6 +147,46 @@ public class UIManager : MonoBehaviour
         }
 
 
+    }
+
+    public void ToggleInfoPanel()
+    {
+        if(!infoPanel.activeSelf)
+        {
+            infoPanel.SetActive(!infoPanel.activeSelf);
+        }
+        if(bag.activeSelf)
+        {
+            bag.SetActive(!bag.activeSelf);
+        }
+        if(statusBar.activeSelf)
+        {
+            statusBar.SetActive(!statusBar.activeSelf);
+        }
+        if(book.activeSelf)
+        {
+            book.SetActive(!book.activeSelf);
+        }     
+    }
+
+        public void ToggleOffInfoPanel()
+    {
+        if(infoPanel.activeSelf)
+        {
+            infoPanel.SetActive(!infoPanel.activeSelf);
+        }
+        if(!bag.activeSelf)
+        {
+            bag.SetActive(!bag.activeSelf);
+        }
+        if(!statusBar.activeSelf)
+        {
+            statusBar.SetActive(!statusBar.activeSelf);
+        }
+        if(!book.activeSelf)
+        {
+            book.SetActive(!book.activeSelf);
+        }     
     }
 
     public void ToggleEndPanel()
