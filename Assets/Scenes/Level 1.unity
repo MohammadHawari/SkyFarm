@@ -5541,7 +5541,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ee0dd5aef179a554d9c2aaf06d48d073, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 37364c3e09fbcf24daf7603d20af7967, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8863,9 +8863,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6988e14d394165b498126a4c89d50447, type: 2}
   - {fileID: 11400000, guid: bea2e8b0eea024947a90e194c7b80953, type: 2}
   - {fileID: 11400000, guid: a5a7d782065cec141bf25ed81f1ed411, type: 2}
-  - {fileID: 11400000, guid: c80e1882188cc904fab5d2ff6370bad3, type: 2}
   - {fileID: 11400000, guid: 5d74423c67cbb4c46afb63d0dbf320e0, type: 2}
-  - {fileID: 11400000, guid: 34e587d892471ed4da2a018e9ad55e64, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   equippedTool: {fileID: 0}
@@ -8895,7 +8895,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toolEquipSlot: {fileID: 882398803}
   inventoryPanel: {fileID: 1450711340}
-  instructionsPanel: {fileID: 1789338505}
+  instructionsPanel: {fileID: 1530026525}
   EndPanel: {fileID: 1176004392}
   toolSlots:
   - {fileID: 1968143318}
@@ -23639,7 +23639,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1530026526
 RectTransform:
   m_ObjectHideFlags: 0
@@ -23656,6 +23656,7 @@ RectTransform:
   - {fileID: 625943941}
   - {fileID: 479743678}
   - {fileID: 1158248684}
+  - {fileID: 1598914616}
   m_Father: {fileID: 1789338506}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -25221,12 +25222,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1073678818}
-  m_Father: {fileID: 1789338506}
-  m_RootOrder: 1
+  m_Father: {fileID: 1530026526}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 656, y: -371}
+  m_AnchoredPosition: {x: 6.4571533, y: -48.90007}
   m_SizeDelta: {x: 177.6343, y: 52.9014}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1598914617
@@ -25275,7 +25276,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 596813164}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: ToggleInstructionsPanel
+        m_MethodName: ToggleOffInstructionsPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -26471,7 +26472,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1678036382
 RectTransform:
   m_ObjectHideFlags: 0
@@ -28003,6 +28004,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1789338506}
+  - component: {fileID: 1789338507}
   m_Layer: 0
   m_Name: Instructions
   m_TagString: Untagged
@@ -28023,7 +28025,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1530026526}
-  - {fileID: 1598914616}
   m_Father: {fileID: 443377669}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -28032,6 +28033,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1789338507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1789338505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e03a605e4ef480b49920d297d28ab4ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  note1: {fileID: 0}
+  note2: {fileID: 0}
+  note3: {fileID: 0}
+  note4: {fileID: 0}
 --- !u!4 &1804585381 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8903058273634951509, guid: f1fc5bb90ac285e4486771552d63bcb8,
@@ -31723,7 +31740,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2022792390}
-  m_LocalRotation: {x: 0.34042522, y: -1.1397633e-15, z: 7.558666e-17, w: 0.9402716}
+  m_LocalRotation: {x: 0.34042522, y: -0.000000028022283, z: 0.000000010145463, w: 0.9402717}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
