@@ -81,7 +81,7 @@ public class SpeechManger : MonoBehaviour
 
             case ConversationNum.four:
                 
-                dialog.text = "We are not finshed yet go ahead and harvest the vegetables, you wil need them to feed the hidden rabbits in exchange for facts. Good luck with searching ;) ";
+                dialog.text = "We are not finshed yet go ahead and harvest the vegetables, you wil need them to feed the hidden ducks in exchange for facts. Good luck with searching ;) ";
                 break;  
         }
     }

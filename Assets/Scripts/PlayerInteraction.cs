@@ -37,6 +37,11 @@ public class PlayerInteraction : MonoBehaviour
             return; 
         }
 
+        // toggle press E to feed
+        // get component duck
+        // enable fact accordingly
+        // make duck disappear
+
         //Deselect the land if the player is not standing on any land at the moment
         if(selectedLand != null)
         {

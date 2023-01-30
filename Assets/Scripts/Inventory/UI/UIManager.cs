@@ -141,12 +141,45 @@ public class UIManager : MonoBehaviour
     public void ToggleInstructionsPanel()
     {
         //If the panel is hidden, show it and vice versa
-        if(!inventoryPanel.activeSelf)
+        if(!instructionsPanel.activeSelf)
         {
             instructionsPanel.SetActive(!instructionsPanel.activeSelf);
         }
 
+        if(bag.activeSelf)
+        {
+            bag.SetActive(!bag.activeSelf);
+        }
+        if(statusBar.activeSelf)
+        {
+            statusBar.SetActive(!statusBar.activeSelf);
+        }
+        if(book.activeSelf)
+        {
+            book.SetActive(!book.activeSelf);
+        }  
+    }
 
+        public void ToggleOffInstructionsPanel()
+    {
+        //If the panel is hidden, show it and vice versa
+        if(instructionsPanel.activeSelf)
+        {
+            instructionsPanel.SetActive(!instructionsPanel.activeSelf);
+        }
+
+        if(!bag.activeSelf)
+        {
+            bag.SetActive(!bag.activeSelf);
+        }
+        if(!statusBar.activeSelf)
+        {
+            statusBar.SetActive(!statusBar.activeSelf);
+        }
+        if(!book.activeSelf)
+        {
+            book.SetActive(!book.activeSelf);
+        } 
     }
 
     public void ToggleInfoPanel()

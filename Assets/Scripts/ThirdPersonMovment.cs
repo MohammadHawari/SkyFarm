@@ -98,6 +98,11 @@ public class ThirdPersonMovment : MonoBehaviour
                 speed = 6;
             }
         }
+        
+        if(this.transform.position.y <= -100)
+        {
+            
+        }
     }
 
     #endregion
