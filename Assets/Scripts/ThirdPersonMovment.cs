@@ -99,9 +99,9 @@ public class ThirdPersonMovment : MonoBehaviour
             }
         }
         
-        if(this.transform.position.y <= -100)
+        if(this.transform.position.y <= -20)
         {
-            
+            this.transform.position = new Vector3(-47.41f, -0.84f, -4.27f);
         }
     }
 
